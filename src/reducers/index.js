@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { START, STOP, RESET, TICK, TOGGLE } from '../actions/game.js'
+import { START, STOP, RESET, CLEAR, TICK, TOGGLE } from '../actions/game.js'
 
 const ROWS = 30
 const COLS = 30
@@ -81,6 +81,12 @@ const game = (state = {
     case STOP:
       return Object.assign({}, state, {
         started: false
+      })
+    case CLEAR:
+      return Object.assign({}, state, {
+        board: create(ROWS, COLS, 0, blank),
+        started: false,
+        generation: 0
       })
     case RESET:
       return Object.assign({}, state, {

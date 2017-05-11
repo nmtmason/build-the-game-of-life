@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 
 import { getStarted, getBoard, getGeneration } from './reducers'
-import { start, stop, reset, tick, toggle } from './actions/game.js'
+import { start, stop, reset, clear, tick, toggle } from './actions/game.js'
 
 import Cell from './components/Cell.jsx'
 import Controls from './components/Controls.jsx'
@@ -70,10 +70,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { board, generation, toggle, start, stop, reset, tick } = this.props
+    const { board, generation, toggle, ...actions } = this.props
     return (
       <Container>
-        <Controls start={start} stop={stop} reset={reset} tick={tick} />
+        <Controls {...actions} />
         <Generation>Generation: {generation}</Generation>
         <Board>
           {board.map((row, x) => (
@@ -102,6 +102,7 @@ const mapDispatchToProps = dispatch => {
     start: () => dispatch(start()),
     stop: () => dispatch(stop()),
     reset: () => dispatch(reset()),
+    clear: () => dispatch(clear()),
     tick: () => dispatch(tick()),
     toggle: (x, y) => dispatch(toggle(x, y))
   }
