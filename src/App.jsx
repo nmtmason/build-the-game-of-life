@@ -49,7 +49,7 @@ class App extends React.Component {
   }
 
   componentWillUnmount () {
-    this.stop()
+    this.props.stop()
   }
 
   componentDidUpdate (prevProps) {
