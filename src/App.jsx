@@ -10,9 +10,9 @@ import Controls from './components/Controls.jsx'
 
 const Container = styled('div')`
   margin: 0 auto;
-  width: 100%;
-  min-width: 500px;
-  max-width: 940px;
+  width: 530px;
+  min-width: 530px;
+  max-width: 530px;
   border: 1px solid #eee;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
   padding: 1rem;
