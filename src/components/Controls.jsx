@@ -22,11 +22,12 @@ const Button = styled('button')`
   line-height: inherit;
 `
 
-const Controls = ({generations, start, stop, reset}) => (
+const Controls = ({generations, start, stop, reset, tick}) => (
   <Inline>
     <Button onClick={start}>Start</Button>
     <Button onClick={stop}>Stop</Button>
     <Button onClick={reset}>Reset</Button>
+    <Button onClick={tick}>Tick</Button>
   </Inline>
 )
 

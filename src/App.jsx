@@ -66,10 +66,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { board, toggle, start, stop, reset } = this.props
+    const { board, toggle, start, stop, reset, tick } = this.props
     return (
       <Container>
-        <Controls start={start} stop={stop} reset={reset} />
+        <Controls start={start} stop={stop} reset={reset} tick={tick} />
         <Board>
           {board.map((row, x) => (
             <div key={x}>
