@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
-import { getStarted, getBoard } from './reducers'
+import { getStarted, getBoard, getGeneration } from './reducers'
 import { start, stop, reset, tick, toggle } from './actions/game.js'
 
 import Cell from './components/Cell.jsx'
@@ -23,6 +23,10 @@ const Container = styled('div')`
     margin-left: auto;
     margin-right: auto;
   }
+`
+
+const Generation = styled('p')`
+  text-align: center;
 `
 
 const Board = styled('div')`
@@ -66,10 +70,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { board, toggle, start, stop, reset, tick } = this.props
+    const { board, generation, toggle, start, stop, reset, tick } = this.props
     return (
       <Container>
         <Controls start={start} stop={stop} reset={reset} tick={tick} />
+        <Generation>Generation: {generation}</Generation>
         <Board>
           {board.map((row, x) => (
             <div key={x}>
@@ -87,7 +92,8 @@ class App extends React.Component {
 const mapStateToProps = state => {
   return {
     board: getBoard(state),
-    started: getStarted(state)
+    started: getStarted(state),
+    generation: getGeneration(state)
   }
 }
 

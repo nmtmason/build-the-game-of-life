@@ -70,7 +70,8 @@ const toggle = (board, x, y) => (
 
 const game = (state = {
   started: false,
-  board: create(ROWS, COLS, 0, blank)
+  board: create(ROWS, COLS, 0, blank),
+  generation: 0
 }, action) => {
   switch (action.type) {
     case START:
@@ -84,11 +85,13 @@ const game = (state = {
     case RESET:
       return Object.assign({}, state, {
         board: create(ROWS, COLS, 0, rand(0, 1)),
-        started: false
+        started: false,
+        generation: 0
       })
     case TICK:
       return Object.assign({}, state, {
-        board: next(state.board)
+        board: next(state.board),
+        generation: state.generation + 1
       })
     case TOGGLE:
       return Object.assign({}, state, {
@@ -101,6 +104,7 @@ const game = (state = {
 
 const getStarted = state => state.game.started
 const getBoard = state => state.game.board
+const getGeneration = state => state.game.generation
 
 const reducers = combineReducers({
   game
@@ -110,5 +114,6 @@ export default reducers
 
 export {
   getStarted,
-  getBoard
+  getBoard,
+  getGeneration
 }
