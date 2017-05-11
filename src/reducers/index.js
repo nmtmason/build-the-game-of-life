@@ -24,8 +24,22 @@ const neighbours = (board, x, y) => {
     [x + 1, y],
     [x + 1, y + 1],
   ]
-  .filter(([x, y]) => x >= 0 && y >= 0 && x < ROWS && y < COLS)
-  .reduce((subtotal, [x, y]) => subtotal + board[x][y], 0)
+  .map(([x, y]) => {
+    const cx = x < 0
+      ? ROWS - Math.abs(x)
+      : x === ROWS
+      ? x - ROWS
+      : x
+    const cy = y < 0
+      ? COLS - Math.abs(y)
+      : y === COLS
+      ? y - COLS
+      : y
+    return [cx, cy]
+  })
+  .reduce((subtotal, [x, y]) => {
+    return subtotal + board[x][y]
+  }, 0)
 }
 
 const lives = (alive, neighbours) => {
@@ -36,8 +50,9 @@ const lives = (alive, neighbours) => {
 
 const next = (board) => {
   return board.map((cols, x) => {
-    return cols.map((alive, y) =>
-      lives(alive, neighbours(board, x, y)) ? 1 : 0)
+    return cols.map((alive, y) => {
+      return lives(alive, neighbours(board, x, y)) ? 1 : 0
+    })
   })
 }
 
