@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components'
+import { injectGlobal } from 'styled-components';
 
 // eslint-disable-next-line
 injectGlobal`
@@ -19,4 +19,4 @@ injectGlobal`
     margin: 1rem;
     background-color: #eee;
   }
-`
+`;

@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import { connect } from 'react-redux'
+import React from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
 
-import { getStarted, getBoard, getGeneration } from './reducers'
-import { start, stop, reset, clear, tick, toggle } from './actions/game.js'
+import { getStarted, getBoard, getGeneration } from './reducers';
+import { start, stop, reset, clear, tick, toggle } from './actions/game.js';
 
-import Cell from './components/Cell.jsx'
-import Controls from './components/Controls.jsx'
+import Cell from './components/Cell.jsx';
+import Controls from './components/Controls.jsx';
 
 const Container = styled('div')`
   margin: 0 auto;
@@ -23,11 +23,11 @@ const Container = styled('div')`
     margin-left: auto;
     margin-right: auto;
   }
-`
+`;
 
 const Generation = styled('p')`
   text-align: center;
-`
+`;
 
 const Board = styled('div')`
   display: flex;
@@ -37,40 +37,40 @@ const Board = styled('div')`
   border: 1px solid #eee;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
   padding: 1px;
-`
+`;
 
 class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.tick = this.tick.bind(this)
+  constructor(props) {
+    super(props);
+    this.tick = this.tick.bind(this);
     this.state = {
       started: false
-    }
+    };
   }
 
-  componentWillMount () {
-    this.props.reset()
+  componentWillMount() {
+    this.props.reset();
   }
 
-  componentWillUnmount () {
-    this.props.stop()
+  componentWillUnmount() {
+    this.props.stop();
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     if (prevProps.started === false && this.props.started === true) {
-      this.tick()
+      this.tick();
     }
   }
 
-  tick () {
+  tick() {
     if (this.props.started) {
-      window.requestAnimationFrame(this.tick)
-      this.props.tick()
+      window.requestAnimationFrame(this.tick);
+      this.props.tick();
     }
   }
 
   render() {
-    const { board, generation, toggle, ...actions } = this.props
+    const { board, generation, toggle, ...actions } = this.props;
     return (
       <Container>
         <Controls {...actions} />
@@ -85,7 +85,7 @@ class App extends React.Component {
           ))}
         </Board>
       </Container>
-    )
+    );
   }
 }
 
@@ -94,8 +94,8 @@ const mapStateToProps = state => {
     board: getBoard(state),
     started: getStarted(state),
     generation: getGeneration(state)
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -105,7 +105,10 @@ const mapDispatchToProps = dispatch => {
     clear: () => dispatch(clear()),
     tick: () => dispatch(tick()),
     toggle: (x, y) => dispatch(toggle(x, y))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

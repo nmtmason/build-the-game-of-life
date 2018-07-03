@@ -1,14 +1,15 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Inline = styled('div')`
   display: flex;
   justify-content: center;
   align-content: center;
-  
+
   & > * + * {
     margin-left: 1rem;
-`
+  }
+`;
 
 const Button = styled('button')`
   width: 100%;
@@ -20,9 +21,9 @@ const Button = styled('button')`
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-`
+`;
 
-const Controls = ({generations, start, stop, reset, clear, tick}) => (
+const Controls = ({ generations, start, stop, reset, clear, tick }) => (
   <Inline>
     <Button onClick={start}>Start</Button>
     <Button onClick={stop}>Stop</Button>
@@ -30,6 +31,6 @@ const Controls = ({generations, start, stop, reset, clear, tick}) => (
     <Button onClick={clear}>Clear</Button>
     <Button onClick={tick}>Tick</Button>
   </Inline>
-)
+);
 
-export default Controls
+export default Controls;
