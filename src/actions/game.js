@@ -1,28 +1,36 @@
-const START = 'START';
-const STOP = 'STOP';
-const RESET = 'RESET';
-const CLEAR = 'CLEAR';
-const TICK = 'TICK';
-const TOGGLE = 'TOGGLE';
+export const RESET = 'RESET';
+export const START = 'START';
+export const STOP = 'STOP';
+export const CLEAR = 'CLEAR';
+export const TICK = 'TICK';
+export const TOGGLE = 'TOGGLE';
 
-const start = () => ({ type: START });
-const stop = () => ({ type: STOP });
-const reset = () => ({ type: RESET });
-const clear = () => ({ type: CLEAR });
-const tick = () => ({ type: TICK });
-const toggle = (x, y) => ({ type: TOGGLE, x, y });
+export const reset = (width, height, rows, cols) => ({
+  type: RESET,
+  width,
+  height,
+  rows,
+  cols
+});
 
-export {
-  START,
-  STOP,
-  RESET,
-  CLEAR,
-  TICK,
-  TOGGLE,
-  start,
-  stop,
-  reset,
-  clear,
-  tick,
-  toggle
-};
+export const start = () => ({
+  type: START
+});
+
+export const stop = () => ({
+  type: STOP
+});
+
+export const clear = () => ({
+  type: CLEAR
+});
+
+export const tick = () => ({
+  type: TICK
+});
+
+export const toggle = (x, y) => ({
+  type: TOGGLE,
+  x,
+  y
+});
