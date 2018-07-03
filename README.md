@@ -14,8 +14,8 @@ https://codepen.io/freeCodeCamp/full/BpwMZv/
   [create-react-app](https://github.com/facebook/create-react-app).
 - Board size for Conway's Game of Life is determined by the size of the
   viewport. It is stored as a 2 dimensional array.
-- Each cell is given a value of 0, 1, 2, denoting whether or not the cell is
-  dead, alive or has been reproduced.
-- The HTML5 canvas API is used to take care of drawing the board.
-- Animation is achieved using the requestAnimationFrame API. FPS is capped at
+- Each cell is given a value of 0, 1, 2, denoting whether the cell is dead,
+  alive or has been reproduced.
+- The HTML5 canvas API is used to draw the board.
+- The `requestAnimationFrame` API is used to animate the board. FPS is capped at
   30, although this is configurable as a parameter on the main App component.
